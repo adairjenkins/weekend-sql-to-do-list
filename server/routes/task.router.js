@@ -23,19 +23,19 @@ router.get('/', (req, res) => {
 // POSTs
 // Adds a new task to the weekend-to-do-list
 router.post('/',  (req, res) => {
-    // let newTask = req.body;
-    // console.log(`adding task`, newTask);
+  let newTask = req.body;
+  console.log(`adding task`, newTask);
   
-    // let queryText = `INSERT INTO "koalas" ("name", "gender", "age", "ready_to_transfer", "notes")
-    //                  VALUES ($1, $2, $3, $4, $5);`;
-    // pool.query(queryText, [newKoala.name, newKoala.gender, newKoala.age, newKoala.readyForTransfer, newKoala.notes])
-    //   .then(result => {
-    //     res.sendStatus(201);
-    //   })
-    //   .catch(error => {
-    //     console.log(`Error adding new koala`, error);
-    //     res.sendStatus(500);
-    //   });
+  let queryText = `INSERT INTO "to-do-list" ("task", "priority", "completion_status")
+                   VALUES ($1, $2, $3);`;
+    pool.query(queryText, [newTask.task, Number(newTask.priority), false])
+    .then(result => {
+         res.sendStatus(201);
+       })
+       .catch(error => {
+         console.log(`Error adding new task`, error);
+         res.sendStatus(500);
+       });
   });
 
 // PUT
