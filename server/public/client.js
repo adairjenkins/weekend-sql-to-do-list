@@ -13,6 +13,7 @@ function addClickHandlers() {
     console.log('addClickHandlers func');
     $('#addBtn').on('click', addTask);
     $('#taskList').on('click', '.deleteBtn', deleteTask);
+    $('#taskList').on('click', '.completeBtn', completeTask);
 }
 
 function refreshTasks() {
@@ -86,5 +87,23 @@ function deleteTask() {
       refreshTasks();
     }).catch(function(err) {
       console.log(err);
+    })
+}
+
+function completeTask() {
+    console.log('completeTask func');
+    let id = $(this).closest('tr').data('taskData').id;
+    console.log("mark as completed id#:", id);
+  
+    $.ajax({
+        url: `/to-do-list/${id}`,
+        method: 'PUT',
+        data: {completion_status: task.completion_status}
+    }).then(function (response) { 
+        console.log('updated!');
+        console.log(response);
+        refreshTasks();
+    }).catch(function(err) {
+        console.log(err);
     })
 }

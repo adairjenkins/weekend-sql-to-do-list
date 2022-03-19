@@ -41,12 +41,13 @@ router.post('/',  (req, res) => {
 
 // PUT
 router.put('/:id', (req, res) => {
-    let id = req.params.id;
+  console.log('in PUT request');  
+  let id = req.params.id;
     console.log(req.body, id);
 
     queryText = `
         UPDATE "to-do-list"
-        SET "ready_to_transfer" = true
+        SET "completion_status" = true
         WHERE "id" = $1;`;
 
     const values = [id];
@@ -55,6 +56,7 @@ router.put('/:id', (req, res) => {
         .then(result => {
             res.sendStatus(200);
         }).catch(err => {
+  });
 });
 
 // DELETE
