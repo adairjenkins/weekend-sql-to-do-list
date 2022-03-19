@@ -31,20 +31,33 @@ function refreshTasks() {
 
 function renderTasks(tasks) {
     console.log('renderTasks func');
-    $('#taskList').empty();
+    $('#incompleteTasks').empty();
+    $('completedTasks').empty();    
 
     for (task of tasks) {
-        let row = $(`
-            <tr>
-                <td>${task.task}</td>
-                <td>${task.priority}</td>
-                <td>${task.completion_status}</td>
-                <td><input class="completeBtn" type = "button" value = "done!"></td>
-                <td><input class="deleteBtn" type = "button" value = "X"></td>
-            </tr>
-        `);
-        row.data('taskData', task);
-        $('#taskList').append(row);
+        let row;
+        if (!task.completion_status) {
+            row = $(`
+                <li>${task.task}
+                    ${task.priority}
+                    ${task.completion_status}
+                    <button class="deleteBtn">&#10003;</button>
+                    <button class="checkBtn">&#10005;</button> 
+                </li>
+            `);
+            row.data('taskData', task);
+            $('#incompleteTasks').append(row);
+        } 
+        else if (task.completion_status) {
+            row = $(`
+                <li>${task.task}
+                    (${task.completion_status})
+                    <span class="timeCompleted">completed:</span>
+                </li>
+            `);
+            row.data('taskData', task);
+            $('#completedTasks').append(row);
+        }
         console.log(row.data('taskData'));
     }
 }

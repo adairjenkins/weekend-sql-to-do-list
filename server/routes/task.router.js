@@ -3,9 +3,6 @@ const router = express.Router();
 
 const pool = require('../modules/pool.js');
 
-// DB CONNECTION
-
-
 // GET
 // retrieves to-do-list from database and sends it to client
 router.get('/', (req, res) => {
@@ -22,7 +19,7 @@ router.get('/', (req, res) => {
   });
 
 // POSTs
-// Adds a new task to the weekend-to-do-list
+// adds a new task to the weekend-to-do-list
 router.post('/',  (req, res) => {
   let newTask = req.body;
   console.log(`adding task`, newTask);
@@ -40,26 +37,28 @@ router.post('/',  (req, res) => {
   });
 
 // PUT
+// updates task completion_status
 router.put('/:id', (req, res) => {
-  console.log('in PUT request');  
   let id = req.params.id;
-    console.log(req.body, id);
+  console.log(`request to update id #`, id);
 
-    queryText = `
-        UPDATE "to-do-list"
-        SET "completion_status" = true
-        WHERE "id" = $1;`;
+  queryText = `
+      UPDATE "to-do-list"
+      SET "completion_status" = true
+      WHERE "id" = $1;
+      `;
 
-    const values = [id];
+  const values = [id];
 
-    pool.query(queryText, values)
-        .then(result => {
-            res.sendStatus(200);
-        }).catch(err => {
+  pool.query(queryText, values)
+      .then(result => {
+        res.sendStatus(200);
+    }).catch(err => {
   });
 });
 
 // DELETE
+// deletes task from database
 router.delete('/:id', (req, res) => {
   console.log(`request to delete id #`, req.params.id);
   
@@ -67,7 +66,6 @@ router.delete('/:id', (req, res) => {
       DELETE FROM "to-do-list"
       WHERE "id" = $1;
   `;
-  // place sanitize data and prevent sql injection
   const values = [req.params.id];
 
   pool.query(queryText, values)
