@@ -16,17 +16,40 @@ function addClickHandlers() {
 
 function refreshTasks() {
     console.log('refreshTasks func');
+    $.ajax({
+        type: 'GET',
+        url: '/to-do-list'
+      }).then(function(response) {
+        console.log(response);
+        renderTasks(response);
+      }).catch(function(error){
+        console.log('error in GET', error);
+      });
+}
+
+function renderTasks(tasks) {
+    console.log('renderTasks func');
+    $('#taskList').empty();
+
+    for (task of tasks) {
+        let row = $(`
+            <tr>
+                <td>${task.task}</td>
+                <td>${task.priority}</td>
+                <td><${task.completion_status}/td>
+            </tr>
+        `);
+        $('#taskList').append(row);
+    }
 }
 
 function addTask() {
     console.log('addTask func');
-    
     const newTask = {
         task: $('#task').val(),
         priority: $('#priority').val(),
     }
     console.log('new task:', newTask);
-
     saveTask(newTask);
 }
 

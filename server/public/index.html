@@ -12,7 +12,7 @@
 <body>
     <header><h1>Weekend To-Do List</h1></header>
     <main>
-        <section id="input">
+        <div id="input">
             <h3>Add New Task</h3>
             <label>Task:</label><input type="text" name="" value="" id="task" size="50">
             <!-- <label>Priority:</label><input type="number" name="" value="" id="Priority" size="50"> -->
@@ -23,10 +23,11 @@
                 <option value='3'>high</option>
               </select>
             <button type="button" id="addBtn">Add</button>
-        </section>
-        <section id="list">
-
-        </section>
+        </div>
+        <div id="listContainer">
+            <table id="taskList">
+            </table>
+        </div>
 
     </main>
 </body>

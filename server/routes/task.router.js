@@ -7,17 +7,18 @@ const pool = require('../modules/pool.js');
 
 
 // GET
+// retrieves to-do-list from database and sends it to client
 router.get('/', (req, res) => {
-    // console.log( 'router GET');
-    // let queryText = 'SELECT * FROM "koalas" ORDER BY UPPER ("name");'; // double quotes or not
-    // pool.query(queryText).then(result => {
-    //   // Sends back the results in an object
-    //   res.send(result.rows);
-    // })
-    // .catch(error => {
-    //   console.log('error getting task', error);
-    //   res.sendStatus(500);
-    // });
+    console.log( 'router GET');
+    let queryText = 'SELECT * FROM "to-do-list" ORDER BY ("priority");';
+    console.log(queryText);
+    pool.query(queryText).then(result => {
+      res.send(result.rows);
+    })
+    .catch(error => {
+      console.log('error getting task', error);
+      res.sendStatus(500);
+    });
   });
 
 // POSTs
