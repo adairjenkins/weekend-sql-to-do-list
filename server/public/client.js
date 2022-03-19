@@ -11,7 +11,8 @@ function handleReady() {
 
 function addClickHandlers() {
     console.log('addClickHandlers func');
-    $("#addBtn").on('click', addTask);
+    $('#addBtn').on('click', addTask);
+    $('#taskList').on('click', '.deleteBtn', deleteTask);
 }
 
 function refreshTasks() {
@@ -36,10 +37,14 @@ function renderTasks(tasks) {
             <tr>
                 <td>${task.task}</td>
                 <td>${task.priority}</td>
-                <td><${task.completion_status}/td>
+                <td>${task.completion_status}</td>
+                <td><input class="completeBtn" type = "button" value = "done!"></td>
+                <td><input class="deleteBtn" type = "button" value = "X"></td>
             </tr>
         `);
+        row.data('taskData', task);
         $('#taskList').append(row);
+        console.log(row.data('taskData'));
     }
 }
 
