@@ -75,4 +75,16 @@ function saveTask(task) {
 
 function deleteTask() {
     console.log('deleteTask func')
+    let id = $(this).closest('tr').data('taskData').id;
+    console.log("delete id#:", id);
+    $.ajax({
+      url: `/to-do-list/${id}`,
+      method: 'DELETE'
+    }).then(function (response) {
+      console.log(`deleted! task #${id}`);
+      console.log(response);
+      refreshTasks();
+    }).catch(function(err) {
+      console.log(err);
+    })
 }

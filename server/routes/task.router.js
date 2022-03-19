@@ -40,24 +40,41 @@ router.post('/',  (req, res) => {
   });
 
 // PUT
-// adds a task from input to the database
 router.put('/:id', (req, res) => {
-//     // let id = req.params.id;
-//     // console.log(req.body, id);
+    let id = req.params.id;
+    console.log(req.body, id);
 
-//     // queryText = `
-//     //     UPDATE "to-do-list"
-//     //     SET "ready_to_transfer" = true
-//     //     WHERE "id" = $1;`;
+    queryText = `
+        UPDATE "to-do-list"
+        SET "ready_to_transfer" = true
+        WHERE "id" = $1;`;
 
-//     // const values = [id];
+    const values = [id];
 
-//     // pool.query(queryText, values)
-//     //     .then(result => {
-//     //         res.sendStatus(200);
-//     //     }).catch(err => {
-// 
+    pool.query(queryText, values)
+        .then(result => {
+            res.sendStatus(200);
+        }).catch(err => {
+});
 
-}); // end delete
+// DELETE
+router.delete('/:id', (req, res) => {
+  console.log(`request to delete id #`, req.params.id);
+  
+  const queryText = `
+      DELETE FROM "to-do-list"
+      WHERE "id" = $1;
+  `;
+  // place sanitize data and prevent sql injection
+  const values = [req.params.id];
+
+  pool.query(queryText, values)
+      .then( result => {
+          res.sendStatus(200);
+      }).catch(err => {
+          console.log(err);
+          res.sendStatus(500);
+      })
+});
 
 module.exports = router;
