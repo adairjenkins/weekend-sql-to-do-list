@@ -12,8 +12,8 @@ function handleReady() {
 function addClickHandlers() {
     console.log('addClickHandlers func');
     $('#addBtn').on('click', addTask);
-    $('#taskList').on('click', '.deleteBtn', deleteTask);
-    $('#taskList').on('click', '.completeBtn', completeTask);
+    $('#incompleteTasks').on('click', '.deleteBtn', deleteTask);
+    $('#incompleteTasks').on('click', '.checkBtn', completeTask);
 }
 
 function refreshTasks() {
@@ -32,7 +32,7 @@ function refreshTasks() {
 function renderTasks(tasks) {
     console.log('renderTasks func');
     $('#incompleteTasks').empty();
-    $('completedTasks').empty();    
+    $('#completedTasks').empty();    
 
     for (task of tasks) {
         let row;
@@ -41,8 +41,8 @@ function renderTasks(tasks) {
                 <li>${task.task}
                     ${task.priority}
                     ${task.completion_status}
-                    <button class="deleteBtn">&#10003;</button>
-                    <button class="checkBtn">&#10005;</button> 
+                    <button class="checkBtn">&#10003;</button> 
+                    <button class="deleteBtn">&#10005;</button>
                 </li>
             `);
             row.data('taskData', task);
@@ -89,7 +89,7 @@ function saveTask(task) {
 
 function deleteTask() {
     console.log('deleteTask func')
-    let id = $(this).closest('tr').data('taskData').id;
+    let id = $(this).closest('li').data('taskData').id;
     console.log("delete id#:", id);
     $.ajax({
       url: `/to-do-list/${id}`,
@@ -105,7 +105,7 @@ function deleteTask() {
 
 function completeTask() {
     console.log('completeTask func');
-    let id = $(this).closest('tr').data('taskData').id;
+    let id = $(this).closest('li').data('taskData').id;
     console.log("mark as completed id#:", id);
   
     $.ajax({

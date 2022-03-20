@@ -26,3 +26,8 @@ ul {
     cursor: default;
     padding: 0px;
 }
+
+/* .checkBtn, .deleteBtn {
+    float: right;
+    justify-content: float-end;
+} */

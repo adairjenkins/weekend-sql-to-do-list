@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
+//const momentRound = require('moment-round');
 
 const pool = require('../modules/pool.js');
 
@@ -41,6 +43,7 @@ router.post('/',  (req, res) => {
 router.put('/:id', (req, res) => {
   let id = req.params.id;
   console.log(`request to update id #`, id);
+  console.log('time', moment().format('YYYY-MM-DD HH:mm:ss'));
 
   queryText = `
       UPDATE "to-do-list"
