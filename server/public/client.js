@@ -38,7 +38,7 @@ function renderTasks(tasks) {
         let row;
         if (!task.completion_status) {
             row = $(`
-                <li>${task.task}
+                <li data-test="testMe">${task.task}
                     ${task.priority}
                     ${task.completion_status}
                     <button class="checkBtn">&#10003;</button> 
@@ -58,7 +58,9 @@ function renderTasks(tasks) {
             row.data('taskData', task);
             $('#completedTasks').append(row);
         }
-        console.log(row.data('taskData'));
+        console.log('data:', row.data('taskData'));
+        console.log('row.data priority:', row.data('taskData').priority);
+        console.log('row.data test:', $('li').data('test'));
     }
 }
 
