@@ -7,13 +7,12 @@ function handleReady() {
 
     refreshTasks();
     addClickHandlers();
-    swal('hello world');
 };
 
 function addClickHandlers() {
     console.log('addClickHandlers func');
     $('#addBtn').on('click', addTask);
-    $('#incompleteTasks').on('click', '.deleteBtn', deleteTask);
+    $('#incompleteTasks').on('click', '.deleteBtn', areYouSure);
     $('#incompleteTasks').on('click', '.checkBtn', completeTask);
 }
 
@@ -100,11 +99,27 @@ function saveTask(task) {
         });
 }
 
+function areYouSure() {
+    let id = $(this).closest('li').data('taskData').id;
+    // alert
+    swal({
+        title: "Are you sure?",
+        text: "Your task will be irreversibly deleted. Forever.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    }).then( function(clickedDelete) {
+            if (clickedDelete) {
+            deleteTask(id)
+            }
+        })  
+}     
+
 // DELETEs task from database and calls refreshTasks to update DOM
-function deleteTask() {
+function deleteTask(id) {
     console.log('deleteTask func')
     // access the task id from taskData
-    let id = $(this).closest('li').data('taskData').id;
+    // let id = $(this).closest('li').data('taskData').id;
     console.log("delete id#:", id);
     // DELETE request - url passes task id to server
     $.ajax({
