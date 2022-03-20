@@ -27,15 +27,15 @@ router.post('/',  (req, res) => {
   
   let queryText = `INSERT INTO "to-do-list" ("task", "priority", "completion_status")
                    VALUES ($1, $2, $3);`;
-    pool.query(queryText, [newTask.task, Number(newTask.priority), false])
+  pool.query(queryText, [newTask.task, Number(newTask.priority), false])
     .then(result => {
-         res.sendStatus(201);
-       })
-       .catch(error => {
-         console.log(`Error adding new task`, error);
-         res.sendStatus(500);
-       });
-  });
+        res.sendStatus(201);
+    })
+    .catch(error => {
+        console.log(`Error adding new task`, error);
+        res.sendStatus(500);
+    });
+});
 
 // PUT
 // updates task completion_status
