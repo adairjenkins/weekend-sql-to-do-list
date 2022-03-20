@@ -9,7 +9,7 @@ const pool = require('../modules/pool.js');
 // retrieves to-do-list from database and sends it to client
 router.get('/', (req, res) => {
     console.log( 'router GET');
-    let queryText = 'SELECT * FROM "to-do-list" ORDER BY ("priority");';
+    let queryText = 'SELECT * FROM "to-do-list"';
     console.log(queryText);
     pool.query(queryText).then(result => {
       res.send(result.rows);
@@ -47,7 +47,7 @@ router.put('/:id', (req, res) => {
 
   queryText = `
       UPDATE "to-do-list"
-      SET "completion_status" = true
+      SET "completion_status" = true, "priority" = 0
       WHERE "id" = $1;
       `;
 

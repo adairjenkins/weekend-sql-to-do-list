@@ -7,7 +7,6 @@
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
-    background-color: #d9dff4;
     height: 100vh;
     font-family: sans-serif;
 }
@@ -32,7 +31,18 @@ ul {
     justify-content: float-end;
 } */
 
-[data-test = "testMe"] {
-    color: purple;
-    font-size: 24;
+[data-priority = "0"] {
+    background-color: #AAD1CB;
+}
+
+[data-priority = "1"] {
+    background-color: #F5E7AF;
+}
+
+[data-priority = "2"] {
+    background-color: #EBB66C;
+}
+
+[data-priority = "3"] {
+    background-color: #E28C4D;
 }
