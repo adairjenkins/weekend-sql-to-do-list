@@ -7,6 +7,7 @@ function handleReady() {
 
     refreshTasks();
     addClickHandlers();
+    swal('hello world');
 };
 
 function addClickHandlers() {
