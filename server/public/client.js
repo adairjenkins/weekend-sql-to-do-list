@@ -40,8 +40,6 @@ function renderTasks(tasks) {
             row = $(`
                 <li data-priority="${task.priority}">
                     ${task.task}
-                    ${task.priority}
-                    ${task.completion_status}
                     <button class="checkBtn">&#10003;</button> 
                     <button class="deleteBtn">&#10005;</button>
                 </li>
@@ -53,8 +51,7 @@ function renderTasks(tasks) {
             row = $(`
                 <li data-priority="${task.priority}">
                     ${task.task}
-                    (${task.completion_status})
-                    <span class="timeCompleted">completed:</span>
+                    <span class="timeCompleted">completed: (time) </span>
                 </li>
             `);
             row.data('taskData', task);
