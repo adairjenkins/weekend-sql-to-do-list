@@ -106,7 +106,7 @@ function areYouSure() {
         title: "Are you sure?",
         text: "Your task will be irreversibly deleted. Forever.",
         icon: "warning",
-        buttons: true,
+        buttons: [true, 'Delete'],
         dangerMode: true
     }).then( function(clickedDelete) {
             if (clickedDelete) {
