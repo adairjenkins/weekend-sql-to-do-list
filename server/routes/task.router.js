@@ -42,15 +42,17 @@ router.post('/',  (req, res) => {
 // updates task completion_status
 router.put('/:id', (req, res) => {
   let id = req.params.id;
-  console.log(`request to update id #`, id);
-  console.log('time', moment().format('YYYY-MM-DD HH:mm:ss'));
+  let time = moment().format('lll');
+  console.log(`completed id #${id} at:`, time);
 
   queryText = `
       UPDATE "to-do-list"
-      SET "completion_status" = true, "priority" = 0
+      SET "completion_status" = true,
+          "priority" = 0,
+          "time_completed" = '${time}'
       WHERE "id" = $1;
       `;
-
+  console.log('updated database');
   const values = [id];
 
   pool.query(queryText, values)
