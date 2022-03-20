@@ -42,8 +42,7 @@ router.post('/',  (req, res) => {
 // updates task completion_status
 router.put('/:id', (req, res) => {
   let id = req.params.id;
-  console.log(`request to update id #`, id);
-  let time = moment().format('YYYY-MM-DD HH:mm:ss');
+  let time = moment().format('lll');
   console.log(`completed id #${id} at:`, time);
 
   queryText = `

@@ -46,3 +46,7 @@ ul {
 [data-priority = "3"] {
     background-color: #E28C4D;
 }
+
+.timeCompleted {
+    font-style: italic;
+}
