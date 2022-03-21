@@ -45,8 +45,8 @@ function renderTasks(tasks) {
             row = $(`
                 <li data-priority="${task.priority}">
                     ${task.task}
-                    <button class="checkBtn">&#10003;</button> 
-                    <button class="deleteBtn">&#10005;</button>
+                    <span class="buttons"><button class="checkBtn">&#11096;</button> 
+                    <button class="deleteBtn">&#10005;</button></span>
                 </li>
             `);
             // assign database categories and values to data-taskData

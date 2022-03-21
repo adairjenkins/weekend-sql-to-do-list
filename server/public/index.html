@@ -8,18 +8,20 @@
     <script src="jquery.js" charset="utf-8"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="client.js" charset="utf-8"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,900;0,1000;1,200;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header><h1>Weekend To-Do List</h1></header>
+        <header><h2>Weekend To-Do List</h2></header>
         <main>
             <div id="inputContainer">
-                <input id="task" type="text" placeholder="Add new task..." size="50">
-                <!-- <label>Priority:</label><input type="number" name="" value="" id="Priority" size="50"> -->
+                <input id="task" type="text" placeholder="Add new task..." size="40">
                 <select id="priority">
                     <option value='' disabled="disabled" selected>--Priority--</option>
-                    <option value='1'>low</option>
+                    <option class="lowPriority"value='1'>low</option>
                     <option value='2'>med</option>
                     <option value='3'>high</option>
                 </select>
