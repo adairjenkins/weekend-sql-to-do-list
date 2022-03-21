@@ -59,7 +59,7 @@ function renderTasks(tasks) {
             row = $(`
                 <li data-priority="${task.priority}">
                     ${task.task}
-                    <span class="timeCompleted">Completed: ${task.time_completed} </span>
+                    <span class="timeCompleted">completed: ${task.time_completed} </span>
                 </li>
             `);
             // assign database categories and values to data-taskData

@@ -14,12 +14,17 @@
 #inputContainer {
     display: flex;
     justify-content:space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 hr {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     height: 1px;
-    width:400px;
+    width:426px;
     border: 0;
     border-top: 1px solid black;
     margin: 1em 0;
@@ -45,7 +50,7 @@ ul {
 }
 
 [data-priority = "3"] {
-    background-color: #E28C4D;
+    background-color: #dc905a;
 }
 
 .lowPriority:hover, .lowPriority:focus {
@@ -82,4 +87,12 @@ li {
 .buttons {
     display:flex;
     justify-content: flex-end;
+}
+
+#completedTasks {
+    margin-top: 10px;
+}
+
+h4 {
+    padding-left: 6px;
 }
