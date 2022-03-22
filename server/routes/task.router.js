@@ -47,7 +47,7 @@ router.put('/:id', (req, res) => {
   queryText = `
       UPDATE "to-do-list"
       SET "completion_status" = true,
-          "priority" = 0,
+          "priority" = 4,
           "time_completed" = '${time}'
       WHERE "id" = $1;
       `;

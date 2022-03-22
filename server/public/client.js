@@ -36,7 +36,7 @@ function renderTasks(tasks) {
     $('#incompleteTasks').empty();
     $('#completedTasks').empty();    
     // display each task as separate list item
-    for (task of tasks) {
+    for (const task of tasks) {
         // create a new row for each task and separate incomplete from completed tasks
         // saves task priority to data-priority so that the priority can be accessed in style.css
         let row;
@@ -79,6 +79,8 @@ function addTask() {
         task: $('#task').val(),
         priority: $('#priority').val(),
     }
+    $('#task').empty(),
+    
     console.log('new task:', newTask);
     saveTask(newTask);
 }
