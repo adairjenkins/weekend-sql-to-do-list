@@ -37,11 +37,11 @@ ul {
     padding: 0px;
 }
 
-[data-priority = "0"] {
-    background-color: #AAD1CB;
+[data-priority = "4"] {
+    background-color: #aad0d1;
 }
 
-[data-priority = "1"] {
+[data-priority = "1"], [data-priority = "0"] {
     background-color: #F5E7AF;
 }
 
